@@ -9,6 +9,4 @@ public interface Bcommand {
 	
 	public void execute(HttpServletRequest request, HttpServletResponse response);
 	
-//	public void executeUpdate(HttpServletRequest request, HttpServletResponse response);
-	
 }

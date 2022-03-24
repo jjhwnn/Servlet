@@ -10,7 +10,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.javalec.bbs.command.BContentCommand;
+import com.javalec.bbs.command.BDeleteCommand;
 import com.javalec.bbs.command.BListCommand;
+import com.javalec.bbs.command.BModifyCommand;
 import com.javalec.bbs.command.BWriteCommand;
 import com.javalec.bbs.command.Bcommand;
 
@@ -73,7 +76,23 @@ public class BFrondController extends HttpServlet {
 		case ("/write.do"):
 			command = new BWriteCommand();
 			command.execute(request, response); 
-			viewPage = "list.do"; // switch문을 끝나고 다시 들어와서 위의 처음 케이스를 실행
+			viewPage = "list.do"; // case ("/write_view.do")에서 설정한 viewPage로 이동
+			break;
+		case ("/content_view.do"):
+			command = new BContentCommand();
+			command.execute(request, response);
+			viewPage = "content_view.jsp";
+			break;
+			// 수정 후 수정한 값을 포함한 리스트 출력
+		case ("/modify.do"):
+			command = new BModifyCommand();
+			command.execute(request, response);
+			viewPage = "list.do";
+			break;
+		case ("/delete.do"):
+			command = new BDeleteCommand();
+			command.execute(request, response);
+			viewPage = "list.do";
 			break;
 		}
 		

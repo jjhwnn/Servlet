@@ -21,12 +21,12 @@
 			<tr>
 				<td>${dto.bId }</td>
 				<td>${dto.bName }</td>
-				<td>${dto.bTitle }</td>
+				<td><a href="content_view.do?bId=${dto.bId }">${dto.bTitle }</a></td>
 				<td>${dto.bDate }</td>
 			</tr>
 		</c:forEach>
 		<tr>
-			<td colspan="5"><a href="write_view.do">글작성</a></td>
+			<td colspan="5"><button><a href="write_view.do">글작성</a></button></td>
 		</tr>
 	</table>
 	
