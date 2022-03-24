@@ -22,12 +22,10 @@
 	String email = "";
 	String rel ="";
 	String name = "";
-	String tel = "",address = "";
+	String tel = "";
+	String address = "";
+	
 	session.setAttribute("seq",seq);
-	
-	String userid = request.getParameter("userid");
-	
-
 	
 	request.setCharacterEncoding("utf-8");
 	String url_mysql = "jdbc:mysql://localhost:3306/customer?serverTimezone=Asia/Seoul&characterEncoding=utf-8&useSSL=false";
@@ -38,9 +36,8 @@
 	
 	try{
 		Class.forName("com.mysql.cj.jdbc.Driver");
+		
 		Connection conn_mysql = DriverManager.getConnection(url_mysql, id_mysql, pw_mysql);
-		
-		
 		Statement stmt_mysql = conn_mysql.createStatement();
 		ResultSet rs = stmt_mysql.executeQuery(query);
 		
@@ -50,9 +47,7 @@
 			address = rs.getString("address");
 			email = rs.getString("email");
 			rel = rs.getString("rel");
-			
 		}
-	
 		conn_mysql.close();
 		
 	}catch(Exception e){
@@ -60,8 +55,6 @@
 		e.getMessage();
 
 	}
-	
-
 
 %>
 

@@ -19,10 +19,10 @@
 	String address = request.getParameter("address");
 	String email= request.getParameter("email");
 	String rel= request.getParameter("rel");
+	
 	String url_mysql = "jdbc:mysql://localhost:3306/customer?serverTimezone=Asia/Seoul&characterEncoding=utf-8&useSSL=false";
 	String id_mysql = "root";
 	String pw_mysql = "qwer1234";
-	
 	
 	PreparedStatement ps = null;
 	try{
@@ -49,7 +49,7 @@
 	}catch(Exception e){
 		e.printStackTrace();
 	}
-	response.sendRedirect("AB01.jsp");
+	response.sendRedirect("ABSearch.jsp");
 
 %>
 </body>

@@ -50,6 +50,6 @@ try{
 	e.printStackTrace();
 }
 
-response.sendRedirect("AB01.jsp"); 
+response.sendRedirect("ABSearch.jsp"); 
 
 %>

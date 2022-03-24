@@ -39,7 +39,7 @@
 		e.printStackTrace();
 		e.getMessage();
 	}
-	response.sendRedirect("AB01.jsp");
+	response.sendRedirect("ABSearch.jsp");
 %>
 </body>
 </html>
