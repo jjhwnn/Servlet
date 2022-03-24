@@ -30,7 +30,9 @@ public class BDao {
 	
 	// 전체검색
 	public ArrayList<BDto> list() {
+		
 		ArrayList<BDto> dtos = new ArrayList<BDto>();
+		
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		ResultSet resultset = null;
@@ -69,6 +71,38 @@ public class BDao {
 			}
 		}
 		return dtos;
+	}
+	
+	public void write(String bName, String bTitle, String bContent) {
+		
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultset = null;
+		
+		try {
+			connection = dataSource.getConnection();
+			String query = "insert into mvc_board(bName, bTitle, bContent, bDate) values(?, ?, ?, now())";
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, bName);
+			preparedStatement.setString(2, bTitle);
+			preparedStatement.setString(3, bContent);
+			
+			preparedStatement.executeUpdate();
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+			
+		}finally { 
+			try {
+				if(resultset != null) resultset.close();
+				if(preparedStatement != null) preparedStatement.close();
+				if(connection != null) connection.close();
+				
+			}catch (Exception e){
+				e.printStackTrace();
+			}
+		}
+		
 	}
 	
 	

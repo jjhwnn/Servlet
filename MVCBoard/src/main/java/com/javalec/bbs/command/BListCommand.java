@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.javalec.bbs.dao.BDao;
 import com.javalec.bbs.dto.BDto;
 
+
+	// list의 응답을 받을 커맨드 인터페이스 상속 클래스
 public class BListCommand implements Bcommand {
 
 	
