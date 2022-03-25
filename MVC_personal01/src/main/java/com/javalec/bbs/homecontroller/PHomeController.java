@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.javalec.bbs.command.PCommand;
+import com.javalec.bbs.command.PContentCommand;
 import com.javalec.bbs.command.PDeleteCommand;
 import com.javalec.bbs.command.PListCommand;
 import com.javalec.bbs.command.PWriteCommand;
@@ -20,7 +21,6 @@ public class PHomeController extends HttpServlet {
        
     public PHomeController() {
         super();
-
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -47,6 +47,7 @@ public class PHomeController extends HttpServlet {
 		String conPath = request.getContextPath(); 
 		String com = uri.substring(conPath.length()); 
 
+		
 		// execute : 실행하다
 		switch(com) {
 		
@@ -71,6 +72,13 @@ public class PHomeController extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "list.do";
 			break;	
+		
+			//
+		case ("/update_view.do"):
+			command = new PContentCommand();
+			command.execute(request, response);
+			viewPage = "content_view.jsp";
+			break;
 		}
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);

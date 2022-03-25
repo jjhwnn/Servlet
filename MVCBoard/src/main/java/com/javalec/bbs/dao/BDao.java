@@ -188,7 +188,6 @@ public class BDao {
 		
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
-		ResultSet resultset = null;
 		
 		try {
 			
@@ -206,7 +205,7 @@ public class BDao {
 			
 		}finally { // 소스가 분리되어 있기 때문에 finally에 넣어서 메모리를 종료해줘야 한다.
 			try {
-				if(resultset != null) resultset.close();
+
 				if(preparedStatement != null) preparedStatement.close();
 				if(connection != null) connection.close();
 				

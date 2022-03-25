@@ -83,8 +83,8 @@ public class PDao {
 			conn = dataSource.getConnection();
 			String Query = "insert into mvc_onelineBoard(pName, pTitle, pDate) values(?, ?, now())";
 			pstmt = conn.prepareStatement(Query);
-			pstmt.setString(1, pName);
-			pstmt.setString(2, bTitle);
+			pstmt.setString(1, pName.trim()); // 양쪽 공백을 제거하기 위한 메서드
+			pstmt.setString(2, bTitle.trim());
 			
 			pstmt.executeUpdate();
 			
@@ -131,12 +131,60 @@ public class PDao {
 			}catch(Exception e) {
 				e.printStackTrace();
 			}
+
+		}
+		
+	}
+	
+	public PDto contentView(String sseq) {
+		
+		PDto dto = new PDto();
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = dataSource.getConnection();
+			String query = "select * from mvc_onelineBoard where seq = ?";
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, Integer.parseInt(sseq));
+			rs = pstmt.executeQuery();
 			
+			if(rs.next()) {
+				
+				int seq = rs.getInt("seq");
+				String pName = rs.getString("pName");
+				String pTitle = rs.getString("pTitle");
+				Timestamp bDate = rs.getTimestamp("pDate");
+				
+				dto = new PDto(seq, pName, pTitle, bDate);
+			}
+			
+		}catch(Exception e) {
+			
+			e.printStackTrace();
+	
+		}finally {
+			
+			try {
+				if(rs != null) rs.close();
+				if(pstmt != null) pstmt.close();
+				if(conn != null) conn.close();
+				
+				
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
 			
 		}
 		
 		
+		return dto;
 	}
+	
+	
+	
 	
 	
 }
