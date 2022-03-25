@@ -21,6 +21,7 @@ public class BListCommand implements Bcommand {
 		
 		// list이름으로 dtos Session 데이터 세팅
 		request.setAttribute("list", dtos);
+		
 	}
 
 }

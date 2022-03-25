@@ -30,6 +30,7 @@
 				<td colspan="2" align="center">
 					<input type="submit" value="수정">
 					<button><a href="delete.do?bId=${content_view.bId }">삭제</a></button>
+					<button><a href="list.do">처음으로</a></button>
 				</td>
 			</tr>
 		</table>

@@ -9,9 +9,8 @@
 <body>
 	<h2>글작성</h2>
 	
-	
 	<form action = "write.do" method="post">
-		<table border="0">
+		<table border="1">
 			<tr>
 				<td>이름</td>
 				<td><input type="text" name="bName" size="20"></td>

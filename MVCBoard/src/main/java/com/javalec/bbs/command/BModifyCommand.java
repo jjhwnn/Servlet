@@ -21,7 +21,6 @@ public class BModifyCommand implements Bcommand {
 		BDao dao = new BDao();
 		
 		dao.modify(bId, bName, bTitle, bContent);
-
 	}
 
 }

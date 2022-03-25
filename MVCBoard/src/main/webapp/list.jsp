@@ -21,6 +21,7 @@
 			<tr>
 				<td>${dto.bId }</td>
 				<td>${dto.bName }</td>
+				<%--해당 게시글의 bid정보가 담긴 제목을 클릭 시 내용까지 보여주는 항목으로 이동  --%>
 				<td><a href="content_view.do?bId=${dto.bId }">${dto.bTitle }</a></td>
 				<td>${dto.bDate }</td>
 			</tr>

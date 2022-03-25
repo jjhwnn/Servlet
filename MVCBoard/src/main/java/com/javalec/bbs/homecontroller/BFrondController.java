@@ -70,26 +70,31 @@ public class BFrondController extends HttpServlet {
 		
 		// write 만들기
 		// 웹에 write_view.do를 입력하면 write_view.jsp 페이지가 나오게 하기...
+		// 새로 입력받을 창으로 따로 받아올 값이 존재하지 않음	
 		case ("/write_view.do"):
 			viewPage = "write_view.jsp";
 			break;
-		case ("/write.do"):
+			
+		case ("/write.do"): // 일종의 hidden페이지
 			command = new BWriteCommand();
 			command.execute(request, response); 
 			viewPage = "list.do"; // case ("/write_view.do")에서 설정한 viewPage로 이동
 			break;
+			
 		case ("/content_view.do"):
 			command = new BContentCommand();
 			command.execute(request, response);
 			viewPage = "content_view.jsp";
 			break;
+			
 			// 수정 후 수정한 값을 포함한 리스트 출력
-		case ("/modify.do"):
+		case ("/modify.do"): // 수정 기능의 hidden
 			command = new BModifyCommand();
 			command.execute(request, response);
 			viewPage = "list.do";
 			break;
-		case ("/delete.do"):
+			
+		case ("/delete.do"): // 삭제 기능의 hidden
 			command = new BDeleteCommand();
 			command.execute(request, response);
 			viewPage = "list.do";
